@@ -1,33 +1,16 @@
-# CLAUDE.md
+# React + Vite
 
-## Project
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-Frontend Portfolio
+Currently, two official plugins are available:
 
-## Tech Stack
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-- React
-- Vite
-- JavaScript
-- HTML5
-- CSS3
-- Tailwind CSS
+## React Compiler
 
-## Coding Conventions
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-- Use functional React components.
-- Use semantic HTML.
-- Follow responsive design principles.
-- Write reusable components.
-- Keep components small and modular.
-- Use descriptive variable and function names.
-- Format code consistently.
-- Follow Conventional Commits.
+## Expanding the Oxlint configuration
 
-## AI Instructions
-
-Act as my frontend mentor.
-
-Review my code before suggesting changes.
-Explain your reasoning.
-Recommend accessibility, performance, and UI/UX improvements.
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
