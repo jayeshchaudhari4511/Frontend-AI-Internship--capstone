@@ -1,0 +1,82 @@
+@import "tailwindcss";
+
+/* ── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Bricolage+Grotesque:wght@600;700;800&display=swap');
+
+/* ── CSS Custom Properties ────────────────────────────────────────────────── */
+:root {
+  --font-sans:    'Inter', system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif;
+
+  --bg:           #080b14;
+  --surface:      #0e1320;
+  --card:         rgba(255,255,255,0.04);
+  --card-border:  rgba(255,255,255,0.08);
+
+  --indigo-400:   #818cf8;
+  --indigo-500:   #6366f1;
+  --indigo-600:   #4f46e5;
+  --violet-500:   #8b5cf6;
+
+  --text-primary:   #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted:     #475569;
+
+  --input-bg:       rgba(255,255,255,0.05);
+  --input-border:   rgba(255,255,255,0.10);
+  --input-focus:    rgba(99,102,241,0.7);
+
+  --error:    #f87171;
+  --success:  #34d399;
+}
+
+/* ── Reset ────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Focus ring (WCAG 2.4.11) ─────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--indigo-400);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track  { background: var(--surface); }
+::-webkit-scrollbar-thumb  { background: var(--indigo-600); border-radius: 6px; }
+
+/* ── Animated gradient orb ────────────────────────────────────────────────── */
+@keyframes orb-drift {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  33%       { transform: translate(30px, -20px) scale(1.05); }
+  66%       { transform: translate(-20px, 15px) scale(0.97); }
+}
+
+.orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  animation: orb-drift 12s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── Fade-in animation ────────────────────────────────────────────────────── */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fade-up 0.5s ease-out both;
+}
