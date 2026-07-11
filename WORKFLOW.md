@@ -156,19 +156,3 @@ A good AI response extracts it into a separate, importable module.
 
 This workflow should be included in every AI prompt for non-trivial components.
 
----
-
-## Branch Structure
-
-```
-main
-├── README.md
-├── CLAUDE.md      ← Updated project rules
-└── WORKFLOW.md    ← This file
-
-feature/vague-ai
-└── Contact form (vague prompt — fast, partial)
-
-feature/spec-driven-ai
-└── Contact form (spec-driven — planned, accessible, tested)
-```
