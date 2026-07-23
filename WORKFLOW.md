@@ -156,3 +156,4 @@ A good AI response extracts it into a separate, importable module.
 
 This workflow should be included in every AI prompt for non-trivial components.
 
+

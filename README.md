@@ -1,33 +1,58 @@
-# CLAUDE.md
+# Frontend Portfolio Foundation (Next.js 15)
 
-## Project
+Production-ready scaffold for a professional frontend portfolio using:
 
-Frontend Portfolio
-
-## Tech Stack
-
+- Next.js 15 (App Router)
 - React
-- Vite
-- JavaScript
-- HTML5
-- CSS3
+- TypeScript
 - Tailwind CSS
 
-## Coding Conventions
+## Folder Architecture
 
-- Use functional React components.
-- Use semantic HTML.
-- Follow responsive design principles.
-- Write reusable components.
-- Keep components small and modular.
-- Use descriptive variable and function names.
-- Format code consistently.
-- Follow Conventional Commits.
+```txt
+src/
+  app/
+    about/
+    case-studies/
+    contact/
+    health/
+    projects/
+    error.tsx
+    layout.tsx
+    loading.tsx
+    not-found.tsx
+    page.tsx
+  components/
+    layout/
+    ui/
+  constants/
+  hooks/
+  lib/
+  styles/
+  types/
+```
 
-## AI Instructions
+## Routes
 
-Act as my frontend mentor.
+- `/`
+- `/about`
+- `/projects`
+- `/case-studies`
+- `/contact`
+- `/health`
 
-Review my code before suggesting changes.
-Explain your reasoning.
-Recommend accessibility, performance, and UI/UX improvements.
+All primary routes are scaffolded with responsive placeholders. The `/health` route performs a server-side API check.
+
+## Run Locally
+
+```bash
+npm install
+npm run dev
+```
+
+## Quality Checks
+
+```bash
+npm run lint
+npm run build
+```
