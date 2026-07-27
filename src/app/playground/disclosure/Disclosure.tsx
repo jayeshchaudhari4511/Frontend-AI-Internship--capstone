@@ -3,7 +3,15 @@
 import { useState } from 'react';
 import './disclosure.css';
 
-function Disclosure() {
+interface DisclosureProps {
+  title?: string;
+  content?: string;
+}
+
+function Disclosure({
+  title = 'More Information',
+  content = 'This is the hidden content that appears when you click the button or press Enter/Space.',
+}: DisclosureProps) {
   const [expanded, setExpanded] = useState(false);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -22,7 +30,7 @@ function Disclosure() {
         aria-controls="disclosure-content"
         className="disclosure-button"
       >
-        More Information
+        {title}
         <span className="disclosure-icon" aria-hidden="true">
           {expanded ? '▼' : '▶'}
         </span>
@@ -33,10 +41,7 @@ function Disclosure() {
         hidden={!expanded}
         className="disclosure-content"
       >
-        <p>
-          This is the hidden content that appears when you click the button or
-          press Enter/Space.
-        </p>
+        <p>{content}</p>
       </div>
     </div>
   );

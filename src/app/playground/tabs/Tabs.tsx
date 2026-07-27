@@ -3,16 +3,35 @@
 import { useState } from 'react';
 import './tabs.css';
 
-function Tabs() {
+interface Tab {
+  id: string;
+  label: string;
+  panel: string;
+}
+
+interface TabPanel {
+  id: string;
+  content: string;
+}
+
+interface TabsProps {
+  tabs?: Tab[];
+  panels?: TabPanel[];
+}
+
+function Tabs({
+  tabs: customTabs,
+  panels: customPanels,
+}: TabsProps = {}) {
   const [activeTab, setActiveTab] = useState(0);
 
-  const tabs = [
+  const tabs: Tab[] = customTabs || [
     { id: 'tab-1', label: 'Overview', panel: 'panel-1' },
     { id: 'tab-2', label: 'Details', panel: 'panel-2' },
     { id: 'tab-3', label: 'Settings', panel: 'panel-3' },
   ];
 
-  const panels = [
+  const panels: TabPanel[] = customPanels || [
     { id: 'panel-1', content: 'This is the overview content.' },
     { id: 'panel-2', content: 'This is the details content.' },
     { id: 'panel-3', content: 'This is the settings content.' },

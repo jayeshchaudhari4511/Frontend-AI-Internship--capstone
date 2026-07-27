@@ -3,7 +3,12 @@
 import { useState, useRef, useEffect } from 'react';
 import './modal.css';
 
-function Modal(){
+interface ModalProps {
+  title?: string;
+  description?: string;
+}
+
+function Modal({ title = 'Delete File', description = 'Are you sure?' }: ModalProps) {
     const [isOpen, setIsOpen] = useState(false);
     const triggerRef = useRef<HTMLButtonElement>(null);
     const modalRef = useRef<HTMLDivElement>(null);
@@ -78,9 +83,9 @@ function Modal(){
                         tabIndex={-1}
                         onClick={(e) => e.stopPropagation()}
                     >
-                        <h2 id="dialog-title"> delete file</h2>
+                        <h2 id="dialog-title">{title}</h2>
 
-                        <p id="dialog-description">Are you sure you want to delete this file?</p>
+                        <p id="dialog-description">{description}</p>
 
                         <button onClick={() => setIsOpen(false)}>cancel</button>
                         <button onClick={() => setIsOpen(false)}>delete</button>
