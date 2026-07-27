@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Outfit, Geist } from "next/font/google";
 
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { siteConfig } from "@/constants/site";
+// @ts-expect-error CSS global import is handled by Next.js
 import "@/styles/globals.css";
+import { cn } from "@/lib/utils";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans"
-});
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -33,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${outfit.variable} dark`}>
+    <html lang="en" className={cn("dark", outfit.variable, "font-sans", geist.variable)}>
       <body className="relative flex min-h-screen flex-col bg-background font-sans text-foreground antialiased selection:bg-primary/30 selection:text-primary">
         {/* Ambient background light gradients */}
         <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
