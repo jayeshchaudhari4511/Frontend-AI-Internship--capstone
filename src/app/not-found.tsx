@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Button, buttonVariants } from "@/components/ui/Button";
+import { buttonVariants } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";

@@ -1,8 +1,8 @@
-import Metadata from "next";
+import type { Metadata } from "next";
 import { Chat } from "@/components/chat/Chat";
 import { siteConfig } from "@/constants/site";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: `AI Portfolio Assistant | ${siteConfig.name}`,
   description: `Interactive AI Portfolio Assistant for ${siteConfig.name}. Ask questions about portfolio projects, tech stack, and background in real time.`,
 };

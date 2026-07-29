@@ -9,11 +9,11 @@ export default function ModalPage() {
         <div>
           <h2 className="text-xl font-semibold mb-2">Test Instructions</h2>
           <ul className="list-disc list-inside space-y-1 text-gray-700">
-            <li>Click "Open Modal" to open the modal</li>
+            <li>Click &ldquo;Open Modal&rdquo; to open the modal</li>
             <li>Press <kbd>Tab</kbd> and <kbd>Shift+Tab</kbd> to cycle through buttons</li>
             <li>Press <kbd>ESC</kbd> to close the modal</li>
             <li>Click outside the modal to close it</li>
-            <li>After closing, focus returns to the "Open Modal" button</li>
+            <li>After closing, focus returns to the &ldquo;Open Modal&rdquo; button</li>
           </ul>
         </div>
 
@@ -25,10 +25,10 @@ export default function ModalPage() {
         <div className="border-t pt-6">
           <h2 className="text-xl font-semibold mb-2">ARIA Features</h2>
           <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
-            <li><code>role="dialog"</code> - Identifies the element as a dialog</li>
-            <li><code>aria-modal="true"</code> - Indicates this is a modal dialog</li>
-            <li><code>aria-labelledby="dialog-title"</code> - Links to the dialog title</li>
-            <li><code>aria-describedby="dialog-description"</code> - Links to the description</li>
+            <li><code>role=&quot;dialog&quot;</code> - Identifies the element as a dialog</li>
+            <li><code>aria-modal=&quot;true&quot;</code> - Indicates this is a modal dialog</li>
+            <li><code>aria-labelledby=&quot;dialog-title&quot;</code> - Links to the dialog title</li>
+            <li><code>aria-describedby=&quot;dialog-description&quot;</code> - Links to the description</li>
           </ul>
         </div>
 

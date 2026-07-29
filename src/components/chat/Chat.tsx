@@ -62,7 +62,7 @@ export function Chat() {
           setApiErrorMessage(parsed.error);
           return;
         }
-      } catch (_) {
+      } catch {
         // Not JSON
       }
       setApiErrorMessage(err.message || "Failed to reach AI service.");
@@ -156,12 +156,12 @@ export function Chat() {
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <h2 className="text-base font-semibold text-slate-100">Jayesh's AI Portfolio Assistant</h2>
+              <h2 className="text-base font-semibold text-slate-100">Jayesh&apos;s AI Portfolio Assistant</h2>
               <span className="px-2 py-0.5 text-[10px] font-medium bg-cyan-950 text-cyan-300 border border-cyan-800/50 rounded-full flex items-center gap-1">
                 <Sparkles className="w-3 h-3" /> Claude 3.5
               </span>
             </div>
-            <p className="text-xs text-slate-400">Ask anything about Jayesh's projects, skills, and background</p>
+            <p className="text-xs text-slate-400">Ask anything about Jayesh&apos;s projects, skills, and background</p>
           </div>
         </div>
 
@@ -198,7 +198,7 @@ export function Chat() {
               Hello! How can I help you today?
             </h3>
             <p className="text-sm text-slate-400 mb-6 leading-relaxed">
-              I am an AI assistant trained on Jayesh Chaudhari's portfolio, key capstone projects, technical skills, and background. Select a prompt or type your query below!
+              I am an AI assistant trained on Jayesh Chaudhari&apos;s portfolio, key capstone projects, technical skills, and background. Select a prompt or type your query below!
             </p>
 
             {/* Quick Prompt Suggestions */}
