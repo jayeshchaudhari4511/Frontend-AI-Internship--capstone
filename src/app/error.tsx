@@ -30,7 +30,7 @@ export default function ErrorPage({ error, reset }: ErrorPageProps) {
             {error.message || "An unhandled runtime error occurred."}
           </p>
           <div className="mt-lg">
-            <Button type="button" variant="primary" onClick={reset}>
+            <Button type="button" variant="default" onClick={reset}>
               Try Again ↻
             </Button>
           </div>

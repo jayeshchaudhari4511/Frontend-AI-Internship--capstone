@@ -1,33 +1,32 @@
 import type { Metadata } from "next";
-import { Inter, Outfit, Geist } from "next/font/google";
+import { Outfit, Geist } from "next/font/google";
 
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { siteConfig } from "@/constants/site";
-// @ts-expect-error CSS global import is handled by Next.js
 import "@/styles/globals.css";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-display"
+  variable: "--font-display",
 });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default: "Jayesh Chaudhari | Portfolio",
-    template: "%s | Jayesh Chaudhari"
+    template: "%s | Jayesh Chaudhari",
   },
   description: siteConfig.description,
   openGraph: {
     title: "Jayesh Chaudhari | Portfolio",
     description: siteConfig.description,
     type: "website",
-    url: siteConfig.url
-  }
+    url: siteConfig.url,
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

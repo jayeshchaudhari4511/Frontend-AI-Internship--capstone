@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { buttonStyles } from "@/components/ui/Button";
+import { Button, buttonVariants } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
@@ -20,7 +20,7 @@ export default function NotFoundPage() {
             Please check the web address or navigate back to the home page.
           </p>
           <div className="mt-lg">
-            <Link href="/" className={buttonStyles({ variant: "primary", size: "md" })}>
+            <Link href="/" className={buttonVariants({ variant: "default", size: "default" })}>
               Return Home →
             </Link>
           </div>

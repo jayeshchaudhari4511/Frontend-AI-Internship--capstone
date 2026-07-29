@@ -48,8 +48,13 @@ export default function HomePage() {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-sm pt-xs">
+              <Link href="/assistant">
+                <Button size="lg" variant="default">
+                  ✨ AI Portfolio Assistant
+                </Button>
+              </Link>
               <Link href="/projects">
-                <Button size="lg" variant="primary">
+                <Button size="lg" variant="outline">
                   Explore Projects
                 </Button>
               </Link>
