@@ -39,6 +39,8 @@ export function Chat() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const liveRegionRef = useRef<HTMLDivElement>(null);
 
+  const [apiErrorMessage, setApiErrorMessage] = useState<string | null>(null);
+
   const {
     messages,
     input,
@@ -48,10 +50,25 @@ export function Chat() {
     stop,
     setMessages,
     append,
+    error,
+    reload,
   } = useChat({
     api: "/api/chat",
     onError: (err) => {
       console.error("Chat streaming error:", err);
+      try {
+        const parsed = JSON.parse(err.message);
+        if (parsed?.error) {
+          setApiErrorMessage(parsed.error);
+          return;
+        }
+      } catch (_) {
+        // Not JSON
+      }
+      setApiErrorMessage(err.message || "Failed to reach AI service.");
+    },
+    onFinish: () => {
+      setApiErrorMessage(null);
     },
   });
 
@@ -216,6 +233,26 @@ export function Chat() {
 
       {/* Scroll to Bottom Button */}
       <ChatScrollButton visible={!isAtBottom} onClick={() => scrollToBottom(true)} />
+
+      {/* Error Alert Banner */}
+      {(error || apiErrorMessage) && (
+        <div className="mx-4 my-2 p-3 bg-rose-950/80 border border-rose-800/80 rounded-xl text-rose-200 text-xs flex items-center justify-between gap-2 shadow-md">
+          <div className="flex items-center gap-2">
+            <span className="font-semibold">Error:</span>
+            <span>{apiErrorMessage || error?.message || "Failed to generate response. Please check your ANTHROPIC_API_KEY environment variable."}</span>
+          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setApiErrorMessage(null);
+              reload();
+            }}
+            className="px-2.5 py-1 bg-rose-800 hover:bg-rose-700 text-white font-medium rounded-lg transition-colors shrink-0"
+          >
+            Retry ↻
+          </button>
+        </div>
+      )}
 
       {/* Input Form Footer */}
       <footer className="p-4 border-t border-slate-800/80 bg-slate-900/40 backdrop-blur-md">

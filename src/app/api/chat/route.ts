@@ -1,4 +1,4 @@
-import { streamText } from "ai";
+import { streamText, convertToCoreMessages } from "ai";
 import { aiConfig } from "@/lib/ai/model";
 import { SYSTEM_PROMPT } from "@/lib/ai/systemPrompt";
 
@@ -9,9 +9,9 @@ export const maxDuration = 30;
  * Next.js 15 App Router API Route Handler for streaming Claude AI responses.
  * 
  * - Uses Vercel AI SDK streamText() with Anthropic Claude 3.5 Sonnet.
- * - Enforces system prompt guardrails server-side.
- * - Keeps API keys strictly on the server (never exposed to client).
- * - Returns a standard Data Stream Response suitable for useChat().
+ * - Converts UI messages to CoreMessages format via convertToCoreMessages().
+ * - Handles API credit/quota and key configuration errors gracefully.
+ * - Returns a Data Stream Response with custom error formatting.
  */
 export async function POST(req: Request) {
   try {
@@ -24,12 +24,13 @@ export async function POST(req: Request) {
       );
     }
 
-    // Check for API Key presence to provide clear developer error feedback if unconfigured
-    if (!process.env.ANTHROPIC_API_KEY) {
-      console.error("Missing ANTHROPIC_API_KEY environment variable.");
+    const apiKey = process.env.ANTHROPIC_API_KEY;
+
+    // Check for API Key presence and placeholder validation
+    if (!apiKey || apiKey.includes("your_anthropic_api_key_here")) {
       return new Response(
         JSON.stringify({
-          error: "ANTHROPIC_API_KEY is not configured in server environment variables.",
+          error: "ANTHROPIC_API_KEY is not configured. Please add your real Anthropic API key to .env.local and restart your dev server (npm run dev).",
         }),
         { status: 500, headers: { "Content-Type": "application/json" } }
       );
@@ -38,16 +39,25 @@ export async function POST(req: Request) {
     const result = streamText({
       model: aiConfig.model,
       system: SYSTEM_PROMPT,
-      messages,
+      messages: convertToCoreMessages(messages),
       temperature: aiConfig.temperature,
       maxTokens: aiConfig.maxTokens,
     });
 
-    return result.toDataStreamResponse();
-  } catch (error) {
+    return result.toDataStreamResponse({
+      getErrorMessage: (err: any) => {
+        const msg = err?.message || String(err);
+        if (msg.includes("credit balance")) {
+          return "Anthropic API Error: Your credit balance is too low to access the Anthropic API. Please add credits at console.anthropic.com.";
+        }
+        return msg;
+      },
+    });
+  } catch (error: any) {
     console.error("Error in AI streaming route handler:", error);
+    const errorMessage = error?.message || error?.cause?.message || "An unexpected error occurred while streaming response.";
     return new Response(
-      JSON.stringify({ error: "An unexpected error occurred while streaming response." }),
+      JSON.stringify({ error: errorMessage }),
       { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }
