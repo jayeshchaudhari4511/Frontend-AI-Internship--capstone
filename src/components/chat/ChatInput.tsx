@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react/no-unescaped-entities */
 
 import React, { useRef, useEffect, KeyboardEvent, FormEvent } from "react";
 import { Send, Square } from "lucide-react";
