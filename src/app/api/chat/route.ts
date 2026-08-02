@@ -45,17 +45,17 @@ export async function POST(req: Request) {
     });
 
     return result.toDataStreamResponse({
-      getErrorMessage: (err: any) => {
-        const msg = err?.message || String(err);
+      getErrorMessage: (err: unknown) => {
+        const msg = err instanceof Error ? err.message : String(err);
         if (msg.includes("credit balance")) {
           return "Anthropic API Error: Your credit balance is too low to access the Anthropic API. Please add credits at console.anthropic.com.";
         }
         return msg;
       },
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in AI streaming route handler:", error);
-    const errorMessage = error?.message || error?.cause?.message || "An unexpected error occurred while streaming response.";
+    const errorMessage = error instanceof Error ? error.message : "An unexpected error occurred while streaming response.";
     return new Response(
       JSON.stringify({ error: errorMessage }),
       { status: 500, headers: { "Content-Type": "application/json" } }

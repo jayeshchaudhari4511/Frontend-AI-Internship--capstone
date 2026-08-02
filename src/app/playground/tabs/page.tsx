@@ -26,9 +26,9 @@ export default function TabsPage() {
         <div className="border-t pt-6">
           <h2 className="text-xl font-semibold mb-2">ARIA Attributes</h2>
           <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
-            <li><code>role="tablist"</code> - Container for tab buttons</li>
-            <li><code>role="tab"</code> - Each tab button</li>
-            <li><code>role="tabpanel"</code> - Content panel for each tab</li>
+            <li><code>role=&ldquo;tablist&rdquo;</code> - Container for tab buttons</li>
+            <li><code>role=&ldquo;tab&rdquo;</code> - Each tab button</li>
+            <li><code>role=&ldquo;tabpanel&rdquo;</code> - Content panel for each tab</li>
             <li><code>aria-selected</code> - Indicates which tab is active</li>
             <li><code>aria-controls</code> - Links tab to its panel</li>
             <li><code>aria-labelledby</code> - Links panel to its tab</li>

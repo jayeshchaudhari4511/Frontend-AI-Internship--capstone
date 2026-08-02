@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable react/no-unescaped-entities */
 
 import React, { useRef, useEffect, KeyboardEvent, FormEvent } from "react";
 import { Send, Square } from "lucide-react";
@@ -72,7 +73,7 @@ export function ChatInput({
       aria-label="Send message to AI assistant"
     >
       <label htmlFor="chat-input" className="sr-only">
-        Ask Jayesh's AI Portfolio Assistant
+        Ask Jayesh&apos;s AI Portfolio Assistant
       </label>
 
       <textarea
