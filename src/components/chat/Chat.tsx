@@ -56,8 +56,18 @@ export function Chat() {
     api: "/api/chat",
     onError: (err) => {
       console.error("Chat streaming error:", err);
+      const msg = String(err?.message || err);
+
+      // If the underlying fetch failed (network/CORS), provide actionable guidance
+      if (msg.includes("Failed to fetch") || msg.includes("NetworkError")) {
+        setApiErrorMessage(
+          "Network error: failed to reach /api/chat. Ensure the dev server is running and the server-side AI API key (GOOGLE_API_KEY) is configured."
+        );
+        return;
+      }
+
       try {
-        const parsed = JSON.parse(err.message);
+        const parsed = JSON.parse(msg);
         if (parsed?.error) {
           setApiErrorMessage(parsed.error);
           return;
@@ -65,7 +75,8 @@ export function Chat() {
       } catch {
         // Not JSON
       }
-      setApiErrorMessage(err.message || "Failed to reach AI service.");
+
+      setApiErrorMessage(msg || "Failed to reach AI service.");
     },
     onFinish: () => {
       setApiErrorMessage(null);
