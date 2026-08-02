@@ -240,7 +240,7 @@ export function Chat() {
         <div className="mx-4 my-2 p-3 bg-rose-950/80 border border-rose-800/80 rounded-xl text-rose-200 text-xs flex items-center justify-between gap-2 shadow-md">
           <div className="flex items-center gap-2">
             <span className="font-semibold">Error:</span>
-            <span>{apiErrorMessage || error?.message || "Failed to generate response. Please check your ANTHROPIC_API_KEY environment variable."}</span>
+            <span>{apiErrorMessage || error?.message || "Failed to generate response. Please check your server-side AI API key configuration."}</span>
           </div>
           <button
             type="button"

@@ -1,14 +1,14 @@
-import { anthropic } from "@ai-sdk/anthropic";
+import { google } from "@ai-sdk/google";
 
 /**
- * Model configuration for Anthropic Claude 3.5 Sonnet.
- * 
- * - model: Anthropic Claude 3.5 Sonnet model instance via Vercel AI SDK.
+ * Model configuration for Google Gemini (Gemini Pro family).
+ *
+ * - model: Gemini model instance via Vercel AI SDK Google provider.
  * - temperature: Controls output randomness (0.7 balances creativity with precision).
  * - maxTokens: Cap on total output generation tokens per response (1024).
  */
 export const aiConfig = {
-  model: anthropic("claude-3-5-sonnet-20241022"),
+  model: google("gemini-pro"),
   temperature: 0.7,
   maxTokens: 1024,
 } as const;

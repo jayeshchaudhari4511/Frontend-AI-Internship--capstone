@@ -24,13 +24,13 @@ export async function POST(req: Request) {
       );
     }
 
-    const apiKey = process.env.ANTHROPIC_API_KEY;
+    const apiKey = process.env.GOOGLE_API_KEY;
 
     // Check for API Key presence and placeholder validation
-    if (!apiKey || apiKey.includes("your_anthropic_api_key_here")) {
+    if (!apiKey || apiKey.includes("your_google_api_key_here")) {
       return new Response(
         JSON.stringify({
-          error: "ANTHROPIC_API_KEY is not configured. Please add your real Anthropic API key to .env.local and restart your dev server (npm run dev).",
+          error: "GOOGLE_API_KEY is not configured. Please add your Google Gemini API key to Vercel or .env.local and restart your dev server (npm run dev).",
         }),
         { status: 500, headers: { "Content-Type": "application/json" } }
       );
